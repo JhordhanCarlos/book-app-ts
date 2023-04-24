@@ -7,13 +7,17 @@ import { styles } from "./styles";
 const INITIAL_BOOKS = [
   {
     title: "Harry Potter and the Sorcerer Stone",
-    created_at: new Date("now"),
+    created_at: new Date("now").toDateString(),
     page_count: 0,
   },
-  { title: "Dune", created_at: new Date("now"), page_count: 350 },
+  {
+    title: "Dune",
+    created_at: new Date("now").toDateString(),
+    page_count: 350,
+  },
   {
     title: "Harry Potter and the Goblet of Fire",
-    created_at: new Date("now"),
+    created_at: new Date("now").toJSON(),
     page_count: 0,
   },
 ];
@@ -86,9 +90,14 @@ export default function Home({ navigation }) {
             />
           ))
         ) : (
-          <Text style={[styles.buttonText, { textAlign: "center" }]}>
-            No books finilized yet.
-          </Text>
+          INITIAL_BOOKS.map((book) => (
+            <BookCard
+              key={book.title}
+              title={book.title}
+              is_finished={true}
+              last_updated={book.created_at}
+            />
+          ))
         )}
       </View>
       <TouchableOpacity
