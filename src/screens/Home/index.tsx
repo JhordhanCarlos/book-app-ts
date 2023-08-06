@@ -3,21 +3,22 @@ import { Text, TouchableOpacity, View } from "react-native";
 import { BookCard, BookProps } from "../../components/BookCard";
 import { green, yellow } from "../../style";
 import { styles } from "./styles";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const INITIAL_BOOKS = [
   {
     title: "Harry Potter and the Sorcerer Stone",
-    created_at: new Date("now").toDateString(),
+    created_at: new Date().toDateString(),
     page_count: 0,
   },
   {
     title: "Dune",
-    created_at: new Date("now").toDateString(),
+    created_at: new Date().toDateString(),
     page_count: 350,
   },
   {
     title: "Harry Potter and the Goblet of Fire",
-    created_at: new Date("now").toJSON(),
+    created_at: new Date().toDateString(),
     page_count: 0,
   },
 ];
@@ -25,8 +26,13 @@ const INITIAL_BOOKS = [
 export default function Home({ navigation }) {
   useEffect(() => {
     setBooksToRead(INITIAL_BOOKS);
+    getBooks();
   }, []);
 
+  const getBooks = async () => {
+    const value = await AsyncStorage.getItem("books");
+    return value;
+  };
   const [tab, setTab] = useState(0);
   const [booksToRead, setBooksToRead] = useState<BookProps[]>([]);
 

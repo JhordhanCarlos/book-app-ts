@@ -31,7 +31,7 @@ export function BookCard(props: BookProps) {
       {!props.is_finished && (
         <View style={styles.pageCountContainer}>
           <Text style={styles.pageCountNumber}>{props.page_count} </Text>
-          <Text style={styles.pageCountText}>Pgs Readed</Text>
+          <Text style={styles.pageCountText}>Readed</Text>
         </View>
       )}
     </View>
