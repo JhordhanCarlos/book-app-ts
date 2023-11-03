@@ -1,5 +1,6 @@
 # book-app-ts
-UI on Figma: https://www.figma.com/file/52FX1q6LYl6rWbDkuhCNgL/BookTracker-2.0?node-id=1%3A139&amp;t=hwVO1XrOysUB37Eo-1
+UI on Figma: 
+https://www.figma.com/file/52FX1q6LYl6rWbDkuhCNgL/BookTracker-2.0?node-id=1%3A139&amp;t=hwVO1XrOysUB37Eo-1
 
 # App to help you start, read and finish a book
 
