@@ -6,6 +6,7 @@ import { primaryBlack, secondaryBlack, styles, thinText } from "./src/style";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import AddNew from "./src/screens/AddNew";
+import BookInfo from "./src/screens/BookInfo";
 
 const Stack = createNativeStackNavigator();
 
@@ -39,6 +40,11 @@ export default function App() {
           name="AddNew"
           component={AddNew}
           options={{ headerTitleAlign: "center", headerTitle: "Add New Book" }}
+        />
+        <Stack.Screen
+          name="BookInfo"
+          component={BookInfo}
+          options={{ headerTitleAlign: "center", headerTitle: "Reading" }}
         />
       </Stack.Navigator>
       <StatusBar style="light" />

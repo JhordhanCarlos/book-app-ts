@@ -24,8 +24,12 @@ const INITIAL_BOOKS = [
 ];
 
 export default function Home({ navigation }) {
+  const [tab, setTab] = useState(0);
+  const [booksToRead, setBooksToRead] = useState<BookProps[]>([]);
+
   useEffect(() => {
     setBooksToRead(INITIAL_BOOKS);
+    AsyncStorage.setItem("books", JSON.stringify(booksToRead));
     getBooks();
   }, []);
 
@@ -33,8 +37,6 @@ export default function Home({ navigation }) {
     const value = await AsyncStorage.getItem("books");
     return value;
   };
-  const [tab, setTab] = useState(0);
-  const [booksToRead, setBooksToRead] = useState<BookProps[]>([]);
 
   return (
     <View style={styles.container}>
@@ -88,12 +90,14 @@ export default function Home({ navigation }) {
           </Text>
         ) : tab === 0 ? (
           INITIAL_BOOKS.map((book) => (
-            <BookCard
-              key={book.title}
-              title={book.title}
-              created_at={book.created_at}
-              page_count={book.page_count}
-            />
+            <TouchableOpacity onPress={() => navigation.navigate("BookInfo")}>
+              <BookCard
+                key={book.title}
+                title={book.title}
+                created_at={book.created_at}
+                page_count={book.page_count}
+              />
+            </TouchableOpacity>
           ))
         ) : (
           INITIAL_BOOKS.map((book) => (
