@@ -7,6 +7,7 @@ export interface BookProps {
   last_updated?: string;
   page_count?: number;
   is_finished?: boolean;
+  total_pages?: number;
 }
 
 export function BookCard(props: BookProps) {
